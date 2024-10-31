@@ -141,11 +141,11 @@ final class AnimationsViewController: UIViewController, UITableViewDelegate, UIT
 		
 		UIView.animate(withDuration: 0.3, animations: {
 			self.runButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-		}) { _ in
+		}) { [weak self] _ in
 			UIView.animate(withDuration: 0.3, animations: {
-				self.runButton.transform = .identity
-			}) { _ in
-				self.showAnimationView(animationName: animationName, speed: speed, backgroundColor: backgroundColor)
+				self?.runButton.transform = .identity
+			}) { [weak self] _ in
+				self?.showAnimationView(animationName: animationName, speed: speed, backgroundColor: backgroundColor)
 			}
 		}
 	}
